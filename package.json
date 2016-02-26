@@ -1,0 +1,31 @@
+{
+  "name": "domain-map",
+  "version": "0.0.1",
+  "description": "Provides domain prefixed ES6 Maps. Can be used as registry for other components.",
+  "main": "lib/domain-map.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register ./test --recursive",
+    "compile": "babel --presets es2015,stage-0 -d lib/ src/",
+    "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobiasrask/domain-map.git"
+  },
+  "keywords": [
+    "ES6",
+    "Map"
+  ],
+  "author": "Tobias Rask",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tobiasrask/domain-map/issues"
+  },
+  "homepage": "https://github.com/tobiasrask/domain-map#readme",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "mocha": "^2.4.5"
+  }
+}
