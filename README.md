@@ -22,10 +22,26 @@ registry.set('myDomain', 'someKey', 'value1');
 registry.set('myDomain', 'otherKey', 'value2');
 
 registry.get('myDomain', 'someKey');
-// This returns 'value1'
+// Returns 'value1'
 
 registry.get('myDomain', 'randomKey', false);
-// This returns 'false'
+// Returns 'false'
+
+
+// Other methods:
+
+registry.getDomainKeysList('myDomain');
+// Returns ["someKey", "otherKey"]
+
+
+let items = registry.getDomain('myDomain');
+
+items.forEach((key, value) => {
+  // Iterate
+});
+
+// Clear whole domain
+registry.clearDomain('myDomain');
 
 
 // Since key values are maps, you can actually save anything:
@@ -68,6 +84,7 @@ registry.get('myDomain', mySecondKey, false);
 // Will return {name: 'Alice'}
 
 ```
+
 
 [npm]: https://www.npmjs.org/package/domain-map
 
