@@ -12,9 +12,7 @@ Using [npm](https://www.npmjs.com/):
 Normal usage with ES2015 modules:
 
 ```js
-
 import DomainMap from 'domain-map'
-
 let registry = new DomainMap();
 
 // Usage with domain prefix
@@ -27,22 +25,16 @@ registry.get('myDomain', 'someKey');
 registry.get('myDomain', 'randomKey', false);
 // Returns 'false'
 
-
-// Other methods:
-
 registry.getDomainKeysList('myDomain');
 // Returns ["someKey", "otherKey"]
 
-
 let items = registry.getDomain('myDomain');
-
 items.forEach((key, value) => {
   // Iterate
 });
 
 // Clear whole domain
 registry.clearDomain('myDomain');
-
 
 // Since key values are maps, you can actually save anything:
 registry.set('properties', 'objectAsValue', {abc: false});
