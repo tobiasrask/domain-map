@@ -49,8 +49,7 @@ class Collection {
   * @return boolean key exits
   */
   has(key) {
-    let mapKey = this.buildFormattedKey(key);
-    return this._data.has(mapKey);
+    return this._data.has(this.buildFormattedKey(key));
   }
 
   /**
@@ -59,8 +58,7 @@ class Collection {
   * @param key
   */
   delete(key) {
-    let mapKey = this.buildFormattedKey(key);
-    this._data.delete(mapKey);
+    this._data.delete(this.buildFormattedKey(key));
   }
 
   /**
