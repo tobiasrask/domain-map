@@ -141,4 +141,92 @@ describe('Registry API', () => {
       done();
     })
   });
+
+  describe('Testing domain operations', () => {
+    it('It support getDomainKeysList and getDomain operations', (done) => {
+      let registry = new DomainMap();
+
+      const testValues = {
+        domainA: 'testDomainA',
+        domainB: 'testDomainB',
+        testKeyA: 'testKeyA',
+        testKeyB: 'testKeyB',
+        testKeyC: 'testKeyC',
+        testKeyD: 'testKeyD',
+        testValueA: 'testValueA',
+        testValueB: 'testValueB',
+        testValueC: 'testValueC',
+        testValueD: 'testValueD',
+        defaultValueA: 'defaultValueA',
+        defaultValueB: 'defaultValueB',
+      }
+
+      const probs = [
+        {
+          domain: testValues.domainA,
+          key: testValues.testKeyA,
+          value: testValues.testValueA
+        },
+        {
+          domain: testValues.domainA,
+          key: testValues.testKeyB,
+          value: testValues.testValueB
+        },
+        {
+          domain: testValues.domainA,
+          key: testValues.testKeyC,
+          value: testValues.testValueC
+        },
+        {
+          domain: testValues.domainB,
+          key: testValues.testKeyA,
+          value: testValues.testValueA
+        },
+        {
+          domain: testValues.domainB,
+          key: testValues.testKeyB,
+          value: testValues.testValueB
+        },
+        {
+          domain: testValues.domainB,
+          key: testValues.testKeyD,
+          value: testValues.testValueD
+        }
+      ]
+
+      // Test default values for empty registry
+      if (registry.getDomainKeysList(testValues.domainA, testValues.defaultValueA) !== testValues.defaultValueA)
+        return done(new Error("getDomainKeysList didn't return default value"));
+
+      if (registry.getDomain(testValues.domainA, testValues.defaultValueB) !== testValues.defaultValueB)
+        return done(new Error("getDomain didn't return default value"));
+
+      let insertedKeys = {};
+
+      probs.map(probItem => {
+        registry.set(probItem.domain, probItem.key, probItem.value);
+        if (!insertedKeys.hasOwnProperty(probItem.domain))
+          insertedKeys[probItem.domain] = [];
+        insertedKeys[probItem.domain].push(probItem.key);
+      });
+
+      // Test default values for non empty registry
+      if (registry.getDomainKeysList(testValues.domainA, testValues.defaultValueA) === testValues.defaultValueA)
+        return done(new Error("getDomainKeysList returns default value"));
+
+      if (registry.getDomain(testValues.domainA, testValues.defaultValueB) === testValues.defaultValueB)
+        return done(new Error("getDomain returns default value"));
+
+      let errors = [];
+      Object.keys(insertedKeys).forEach(function (domainName) {
+        if (JSON.stringify(insertedKeys[domainName]) !== JSON.stringify(registry.getDomainKeysList(domainName)))
+          errors.push(new Error("getDomain didn't return all expected keys"))
+      });
+
+      if (errors.length > 0)
+        return done(errors[0]);
+
+      done();
+    })
+  });
 });
