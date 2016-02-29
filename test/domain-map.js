@@ -218,9 +218,22 @@ describe('Registry API', () => {
         return done(new Error("getDomain returns default value"));
 
       let errors = [];
+
+      // Test key listing
       Object.keys(insertedKeys).forEach(function (domainName) {
         if (JSON.stringify(insertedKeys[domainName]) !== JSON.stringify(registry.getDomainKeysList(domainName)))
-          errors.push(new Error("getDomain didn't return all expected keys"))
+          errors.push(new Error("getDomainKeysList didn't return all expected keys"))
+      });
+
+      if (errors.length > 0)
+        return done(errors[0]);
+
+      // Test domain map
+      Object.keys(insertedKeys).forEach(function (domainName) {
+        registry.getDomain(domainName).forEach((testValue, testKey) => {
+          if (insertedKeys[domainName].indexOf(testKey) < 0)
+            errors.push(new Error("getDomain didn't return all expected keys"))
+        });
       });
 
       if (errors.length > 0)
