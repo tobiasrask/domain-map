@@ -1,6 +1,3 @@
-/**
-* General tests for system
-*/
 import DomainMap from "./../src/domain-map";
 import assert from "assert";
 

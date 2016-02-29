@@ -79,7 +79,7 @@ class DomainMap {
   * @param defaultValue
   * @return domain key list
   */
-  getDomainKeysList(domaindefaultValue) {
+  getDomainKeysList(domain, defaultValue) {
     if (defaultValue == undefined) defaultValue = null;
     return this._data.hasOwnProperty(domain) ?
       this._data[domain].getKeysList(): defaultValue;
