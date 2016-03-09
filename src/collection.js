@@ -10,8 +10,7 @@ class Collection {
   * @param variables with following keys:
   *   - boolean strictKeyMode, defaults to true
   */
-  constructor(variables) {
-    if (variables === undefined) variables = {};
+  constructor(variables = {}) {
     this._data = new Map();
     this._strictKeyMode = variables.hasOwnProperty('strictKeyMode') &&
       !variables.strictKeyMode ? false : true;
@@ -32,14 +31,13 @@ class Collection {
   * Get key
   * 
   * @param key
-  * @param default_value
+  * @param defaultValue
   *   Defaults to false
   */
-  get(key, default_value) {
-    if (default_value === undefined) default_value = false;
+  get(key, defaultValue = false) {
     let mapKey = this.buildFormattedKey(key);
     return (this._data.has(mapKey)) ?
-      this._data.get(mapKey) : default_value;
+      this._data.get(mapKey) : defaultValue;
   }
 
   /**

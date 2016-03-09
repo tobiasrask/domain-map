@@ -11,12 +11,8 @@ class DomainMap {
   * @param variables with following keys:
   *   - boolean strictKeyMode, defaults to true
   */
-  constructor(variables) {
-    if (variables === undefined) variables = {};
-    // Init
+  constructor(variables = {}) {
     this._data = {};
-
-    // Strict mode
     this._strictKeyMode = variables.hasOwnProperty('strictKeyMode') &&
       !variables.strictKeyMode ? false : true;
   }
@@ -39,14 +35,13 @@ class DomainMap {
   * 
   * @param domain
   * @param key
-  * @param default_value
+  * @param defaultValue
   *   Defaults to false
   */
-  get(domain, key, default_value) {
-    if (default_value === undefined) default_value = false;
+  get(domain, key, defaultValue = false) {
     if (!this._data.hasOwnProperty(domain))
-      return default_value;
-    return this._data[domain].get(key, default_value);
+      return defaultValue;
+    return this._data[domain].get(key, defaultValue);
   }
 
   /**
@@ -79,8 +74,7 @@ class DomainMap {
   * @param defaultValue
   * @return domain key list
   */
-  getDomainKeysList(domain, defaultValue) {
-    if (defaultValue == undefined) defaultValue = null;
+  getDomainKeysList(domain, defaultValue = null) {
     return this._data.hasOwnProperty(domain) ?
       this._data[domain].getKeysList(): defaultValue;
   }
@@ -92,8 +86,7 @@ class DomainMap {
   * @param defaultValue
   * @return domain collection or null
   */
-  getDomain(domain, defaultValue) {
-    if (defaultValue == undefined) defaultValue = null;
+  getDomain(domain, defaultValue = null) {
     return this._data.hasOwnProperty(domain) ?
       this._data[domain] : defaultValue;
   }
@@ -104,8 +97,7 @@ class DomainMap {
   * @param variables
   * @return collection
   */
-  static createCollection(variables) {
-    if (variables === undefined) variables = {};
+  static createCollection(variables = {}) {
     return new Collection(variables);
   }
 }
