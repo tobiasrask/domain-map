@@ -97,6 +97,17 @@ class DomainMap {
     return this._data.hasOwnProperty(domain) ?
       this._data[domain] : defaultValue;
   }
+
+  /**
+  * Static method to create collection.
+  *
+  * @param variables
+  * @return collection
+  */
+  static CreateCollection(variables) {
+    if (variables === undefined) variables = {};
+    return new Collection(variables);
+  }
 }
 
 export default DomainMap
