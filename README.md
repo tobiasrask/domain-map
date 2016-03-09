@@ -1,5 +1,5 @@
 # domain-map
-Provides domain prefixed ES6 Maps. Can be used as registry for other components.
+[domain-map](https://www.npmjs.org/package/domain-map) provides domain prefixed ES6 Maps, and can be used as registry for other components.
 
 ### Installation
 
