@@ -81,6 +81,12 @@ registry.get('myDomain', mySecondKey, false);
 
 ```
 
+If you need just Map object with *deep object key comparison*, you can have one with static createCollection() method:
+
+```js
+let collection = DomainMap.createCollection({strictKeyMode: false});
+```
+
 ### Test
 Run tests using [npm](https://www.npmjs.com/):
 

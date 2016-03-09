@@ -104,7 +104,7 @@ class DomainMap {
   * @param variables
   * @return collection
   */
-  static CreateCollection(variables) {
+  static createCollection(variables) {
     if (variables === undefined) variables = {};
     return new Collection(variables);
   }
