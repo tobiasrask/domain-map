@@ -81,6 +81,10 @@ registry.get('myDomain', mySecondKey, false);
 
 ```
 
+### Test
+Run tests using [npm](https://www.npmjs.com/):
+
+    $ npm run test
 
 [npm]: https://www.npmjs.org/package/domain-map
 
