@@ -31,10 +31,22 @@ describe('Registry API', () => {
       if (registry.get(domainB, testKeyA, defaultValue) !== defaultValue)
         return done(new Error("Registry didn't return default value for missing key"));
 
-
+      if (registry.getDomain(domainA) != null)
+        return done(new Error("Didn't reuturn empty domain"));
+      
       // Test with values and default values
       registry.set(domainA, testKeyA, testValueA);
       registry.set(domainA, testKeyB, testValueB);
+
+      if (registry.getDomain(domainA) == null)
+        return done(new Error("Didn't reuturn non empty domain"));
+
+      if (registry.getDomain(domainA).getSize() != 2)
+        return done(new Error("Collection size doesn't match"));
+
+      if (registry.getDomain(domainA).getMap().size !=
+          registry.getDomain(domainA).getSize())
+        return done(new Error("Collection getSize() returns wrong value"));
 
       if (registry.get(domainA, testKeyA) !== testValueA)
         return done(new Error("Registry didn't return right test value"));
@@ -54,7 +66,6 @@ describe('Registry API', () => {
 
       if (registry.get(domainB, testKeyA, defaultValue) !== defaultValue)
         return done(new Error("Registry didn't return default value for missing key"));
-
 
       // Test deleting same keys from different domain
       registry.delete(domainB, testKeyA);

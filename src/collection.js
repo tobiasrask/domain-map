@@ -91,6 +91,14 @@ class Collection {
     return keys;
   }
 
+  /**
+  * Collection size.
+  *
+  * @return size
+  */
+  getSize() {
+    return this._data.size;
+  }
 
   /**
   * Clear collection data.
