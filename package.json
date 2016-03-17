@@ -1,6 +1,6 @@
 {
   "name": "domain-map",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Provides domain prefixed ES6 Maps. Can be used as registry for other components.",
   "main": "lib/domain-map.js",
   "scripts": {
