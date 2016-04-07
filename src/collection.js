@@ -92,11 +92,20 @@ class Collection {
   }
 
   /**
-  * Collection size.
+  * Alias for @size.
   *
   * @return size
   */
   getSize() {
+    return this._data.size;
+  }
+
+  /**
+  * Collection size.
+  *
+  * @return size
+  */
+  size() {
     return this._data.size;
   }
 
