@@ -61,7 +61,7 @@ map.get(myObjectKey);
 // Will return { name: "Alice" }
 
 map.get(mySecondKey);
-// Will return null, since key objects are not same
+// Will return null, since the keys "myObjectKey" and "mySecondKey" are not same.
 
 ```
 
