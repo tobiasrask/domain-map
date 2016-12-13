@@ -46,8 +46,8 @@ registry.set('properties', 'exampleFunction', (value) => { return value + 1; });
 
 ```
 
-In some cases you want to store data for key which is actually an object.
-Normal ES6 Map object will return value for object only if key is exactly the same object you used when storing data:
+In some cases you might want to store data for a key which is actually an object.
+Normal ES6 Map object will do this, but it will return value for your key only if the key object is exactly the same you provided when storing data:
 
 ```js
 // Normal maps
