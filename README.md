@@ -41,8 +41,8 @@ items.forEach((key, value) => {
 registry.clearDomain('myDomain');
 
 // Since key values are maps, you can actually save anything:
-registry.set('properties', 'objectAsValue', {abc: false});
-registry.set('properties', 'exampleFunction', (value) => { return value + 1; });
+registry.set('properties', 'objectAsValue', { abc: false });
+registry.set('properties', 'exampleFunction', value => { return value + 1; });
 
 ```
 
@@ -53,12 +53,12 @@ Normal ES6 Map object will do this, but it will return value for your key only i
 // Normal maps
 let map = new Map();
 
-let myObjectKey = {entityId: 1};
-let mySecondKey = {entityId: 1};
+let myObjectKey = { entityId: 1 };
+let mySecondKey = { entityId: 1 };
 
-map.set(myObjectKey, {name: "Alice"});
+map.set(myObjectKey, { name: "Alice" });
 map.get(myObjectKey);
-// Will return {name: "Alice"}
+// Will return { name: "Alice" }
 
 map.get(mySecondKey);
 // Will return null, since key objects are not same
@@ -72,12 +72,12 @@ import DomainMap from 'domain-map'
 
 let registry = new DomainMap({strictKeyMode: false});
 
-let myObjectKey = {entityId: 1};
-let mySecondKey = {entityId: 1};
+let myObjectKey = { entityId: 1 };
+let mySecondKey = { entityId: 1 };
 
-registry.set('myDomain', myObjectKey, {name: 'Alice'});
+registry.set('myDomain', myObjectKey, { name: 'Alice' });
 registry.get('myDomain', mySecondKey, false);
-// Will return {name: 'Alice'}
+// Will return { name: 'Alice' }
 
 ```
 
