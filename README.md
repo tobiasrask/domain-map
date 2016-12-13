@@ -1,5 +1,5 @@
 # domain-map
-[domain-map](https://www.npmjs.org/package/domain-map) provides domain prefixed ES6 Maps, and can be used as registry for other components.
+[domain-map](https://www.npmjs.org/package/domain-map) provides domain prefixed ES6 Maps, and can be used as map for other components.
 
 ### Installation
 
@@ -13,36 +13,36 @@ Normal usage with ES2015 modules:
 
 ```js
 import DomainMap from 'domain-map'
-let registry = new DomainMap();
+let map = new DomainMap();
 
 // Set value for key with domain prefix
-registry.set('myDomain', 'someKey', 'value1');
-registry.set('myDomain', 'otherKey', 'value2');
+map.set('myDomain', 'someKey', 'value1');
+map.set('myDomain', 'otherKey', 'value2');
 
 // Get value for domain key
-registry.get('myDomain', 'someKey');
+map.get('myDomain', 'someKey');
 // Returns 'value1'
 
 // You can provide default value, which will be used if key doesn't exists
-registry.get('myDomain', 'randomKey', false);
+map.get('myDomain', 'randomKey', false);
 // Returns 'false'
 
 // Get list of keys
-registry.getDomainKeysList('myDomain');
+map.getDomainKeysList('myDomain');
 // Returns ["someKey", "otherKey"]
 
 // Or whole domain
-let items = registry.getDomain('myDomain');
+let items = map.getDomain('myDomain');
 items.forEach((key, value) => {
   // Iterate
 });
 
 // Clear whole domain
-registry.clearDomain('myDomain');
+map.clearDomain('myDomain');
 
 // Since key values are maps, you can actually save anything:
-registry.set('properties', 'objectAsValue', { abc: false });
-registry.set('properties', 'exampleFunction', value => { return value + 1; });
+map.set('properties', 'objectAsValue', { abc: false });
+map.set('properties', 'exampleFunction', value => { return value + 1; });
 
 ```
 
@@ -70,13 +70,13 @@ Domain map allows you to use "deep object key comparison". Two objects are same 
 ```js
 import DomainMap from 'domain-map'
 
-let registry = new DomainMap({strictKeyMode: false});
+let map = new DomainMap({strictKeyMode: false});
 
 let myObjectKey = { entityId: 1 };
 let mySecondKey = { entityId: 1 };
 
-registry.set('myDomain', myObjectKey, { name: 'Alice' });
-registry.get('myDomain', mySecondKey, false);
+map.set('myDomain', myObjectKey, { name: 'Alice' });
+map.get('myDomain', mySecondKey, false);
 // Will return { name: 'Alice' }
 
 ```
