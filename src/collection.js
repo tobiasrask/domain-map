@@ -29,7 +29,7 @@ class Collection {
 
   /**
   * Get key
-  * 
+  *
   * @param key
   * @param defaultValue
   *   Defaults to false
@@ -85,7 +85,7 @@ class Collection {
     for (var key of this._data.keys()) {
       if (this._strictKeyMode)
         keys.push(key);
-      else 
+      else
         keys.push(JSON.parse(key));
     }
     return keys;

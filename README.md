@@ -70,7 +70,7 @@ Domain map allows you to use "deep object key comparison". Two objects are same 
 ```js
 import DomainMap from 'domain-map'
 
-let map = new DomainMap({strictKeyMode: false});
+let map = new DomainMap({ strictKeyMode: false });
 
 let myObjectKey = { entityId: 1 };
 let mySecondKey = { entityId: 1 };

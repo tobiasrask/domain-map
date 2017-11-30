@@ -32,7 +32,7 @@ class DomainMap {
 
   /**
   * Get key
-  * 
+  *
   * @param domain
   * @param key
   * @param defaultValue
